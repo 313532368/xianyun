@@ -4,33 +4,32 @@
     <el-carousel>
       <el-carousel-item v-for="(index,value) in banners " :key="value">
         <div
-          class="banner-image"
           :style="`
                 background:url(${value.url}) center center no-repeat;
                 background-size:contain contain;
                 `"
-        ></div>
+          class="banner-image"
+        />
       </el-carousel-item>
     </el-carousel>
   </div>
 </template>
 
-
 <script>
 export default {
-  data() {
+  data () {
     return {
       banners: [
         {
-          url: " https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2638329283,1152876418&fm=11&gp=0.jpg"
+          url: ' https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2638329283,1152876418&fm=11&gp=0.jpg'
         },
         {
-            url: " https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2638329283,1152876418&fm=11&gp=0.jpg"
+          url: ' https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2638329283,1152876418&fm=11&gp=0.jpg'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped lang="less">

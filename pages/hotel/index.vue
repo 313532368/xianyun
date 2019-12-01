@@ -1,6 +1,6 @@
 <template>
   <div class="hotel">
-        旅店
+    旅店
   </div>
 </template>
 

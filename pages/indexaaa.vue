@@ -4,12 +4,12 @@
     <el-carousel :interval="5000" arrow="always">
       <el-carousel-item v-for="(item, index) in banners" :key="index">
         <div
-          class="banner-image"
           :style="`
                 background:url(${$axios.defaults.baseURL+item.url}) center center no-repeat;
                 background-size:contain contain;
                 `"
-        ></div>
+          class="banner-image"
+        />
       </el-carousel-item>
     </el-carousel>
     <!--  -->
@@ -23,7 +23,7 @@
             :class="{active: index === currentOption}"
             @click="handleOption(index)"
           >
-            <i>{{item.name}}</i>
+            <i>{{ item.name }}</i>
           </span>
         </el-row>
 
@@ -33,63 +33,62 @@
             :placeholder="options[currentOption].placeholder"
             v-model="searchValue"
             @keyup.enter="handleSearch"
-          />
-          <i class="el-icon-search" @click="handleSearch"></i>
+          >
+          <i @click="handleSearch" class="el-icon-search" />
         </el-row>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
 export default {
-  data() {
+  data () {
     return {
       // 轮播图数据
       banners: [],
       options: [
         // 搜索框tab选项
         {
-          name: "攻略",
-          placeholder: "搜索城市",
-          pageUrl: "/post?city="
+          name: '攻略',
+          placeholder: '搜索城市',
+          pageUrl: '/post?city='
         },
         {
-          name: "酒店",
-          placeholder: "请输入城市搜索酒店",
-          pageUrl: "/hotel?city="
+          name: '酒店',
+          placeholder: '请输入城市搜索酒店',
+          pageUrl: '/hotel?city='
         },
         {
-          name: "机票",
-          placeholder: "请输入出发地",
-          pageUrl: "/air"
+          name: '机票',
+          placeholder: '请输入出发地',
+          pageUrl: '/air'
         }
       ],
-      searchValue: "", // 搜索框的值
+      searchValue: '', // 搜索框的值
       currentOption: 0 // 当前选中的选项
-    };
+    }
   },
-  mounted() {
-    //获取数据库数据   类似于API接口
+  mounted () {
+    // 获取数据库数据   类似于API接口
     this.$axios({
-      url: "/scenics/banners"
-    }).then(res => {
-      const { data } = res.data;
-      this.banners = data;
-    });
+      url: '/scenics/banners'
+    }).then((res) => {
+      const { data } = res.data
+      this.banners = data
+    })
   },
   methods: {
-    handleOption(index) {
-        this.currentOption=index
+    handleOption (index) {
+      this.currentOption = index
     },
-    handleSearch() {
-        //当搜索按钮点击触发时  搜索栏  跳转到对应的页面
-         // 跳转时候给对应的页面url加上搜索内容参数
-         this.$router.push(this.options[this.currentOption].pageUrl+this.searchValue)
+    handleSearch () {
+      // 当搜索按钮点击触发时  搜索栏  跳转到对应的页面
+      // 跳转时候给对应的页面url加上搜索内容参数
+      this.$router.push(this.options[this.currentOption].pageUrl + this.searchValue)
     }
   }
-};
+}
 </script>
 
 <style scoped lang="less">

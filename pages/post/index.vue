@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-        文章
+    文章
   </div>
 </template>
 
